@@ -9,7 +9,7 @@ function updateSubtotal(product) {
   //console.log('value price: ', priceValue, typeof priceValue)
 
   // get value from input form (using key 'value')
-  let quantity = product.querySelector('#quantity-input')
+  const quantity = product.querySelector('#quantity-input')
   let quantityValue = quantity.value
  //console.log('elem quantity', quantityValue,  typeof quantityValue)
 
@@ -27,8 +27,10 @@ function updateSubtotal(product) {
 }
 
 function calculateAll() {
- 
+  // Grab the object - total of all prodducts  
   let allProd = document.getElementsByClassName('product')
+  // init all SubTotals to assign later on to allProd
+  let allSubTotals = 0  
 
   //let allProdValue = 
   // console.log(allProd.innerText)
@@ -36,18 +38,26 @@ function calculateAll() {
   // console.log(allProd[1])
 
 for (let i of allProd) {
-  updateSubtotal(i)
+  let subTotals = updateSubtotal(i)
+  allSubTotals = allSubTotals + subTotals  
 }
+
+//console.log('get i price ', allSubTotals)
+
+//ITERATION 3
+// create object from total-value span
+let totalPriceAllProd = document.querySelector('#total-value span')
+// get innerText of Obje 
+let totalPriceAllProdValue = totalPriceAllProd.innerText
+// give it the value of all prices
+totalPriceAllProdValue = allSubTotals
+totalPriceAllProd.innerText = allSubTotals
+console.log('total price all prod ', typeof totalPriceAllProd, totalPriceAllProdValue)
+
   // //---test ---
   // const singleProduct = document.querySelector('.product');
   // updateSubtotal(singleProduct);
   // end of test
-
-  // ITERATION 2
-  
-
-  // ITERATION 3
-  //... your code goes here
 }
 
 // ITERATION 4
